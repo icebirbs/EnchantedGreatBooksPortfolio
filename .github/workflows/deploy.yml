@@ -28,10 +28,10 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - name: Build
-        # Served at https://<user>.github.io/<repo>/ ; repo should be named greatbookportfolio
+        # Served at https://icebirbs.github.io/EnchantedGreatBooksPortfolio/
         run: pnpm build
         env:
-          VITE_BASE: /${{ github.event.repository.name }}/
+          VITE_BASE: /EnchantedGreatBooksPortfolio/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
