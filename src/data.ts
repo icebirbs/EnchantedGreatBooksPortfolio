@@ -4,7 +4,7 @@ export const profile = {
   course: 'Bachelors in Science and Information Technology',
   year: '4th year',
   section: '1561',
-  photo: '/assets/rey-francis-morata.png',
+  photo: `${import.meta.env.BASE_URL}assets/rey-francis-morata.png`,
   intro: [
     'I’m Rey! When I’m not working on my 4th-year IT projects, you can usually find me lost in a fantasy novel or writing stories of my own. From drafting fan fiction to world-building an entire original universe for Dungeons & Dragons, I love bringing imaginative worlds to life.',
   ],

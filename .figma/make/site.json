@@ -1,10 +1,13 @@
 {
-  "description": "Explore a student’s Great Books portfolio with literary analyses, course insights, and reflections in an immersive, easy-to-navigate digital library.",
-  "robots": {
-    "index": false
-  },
-  "accessibility": {
-    "addBypassLinks": false,
-    "ignoreReducedMotion": false
-  }
+    "description":  "Explore a student’s Great Books portfolio with literary analyses, course insights, and reflections in an immersive, easy-to-navigate digital library.",
+    "robots":  {
+                   "index":  false
+               },
+    "accessibility":  {
+                          "addBypassLinks":  false,
+                          "ignoreReducedMotion":  false
+                      },
+    "icons":  {
+                  "icon":  "favicon.png"
+              }
 }
