@@ -4,7 +4,15 @@ import tailwindcss from '@tailwindcss/vite'
 import fs from 'node:fs'
 import path from 'node:path'
 
-import siteConfiguration from './.figma/make/site.json'
+// Site metadata (previously .figma/make/site.json)
+const siteConfiguration = {
+  title: 'Great Books Portfolio | Rey Francis Morata',
+  description:
+    'Explore a student’s Great Books portfolio with literary analyses, course insights, and reflections in an immersive, easy-to-navigate digital library.',
+  robots: { index: false },
+  icons: { icon: 'favicon.svg' },
+  accessibility: { addBypassLinks: false },
+}
 
 
 // Vite config — https://vitejs.dev/config/
@@ -19,7 +27,7 @@ export default defineConfig(({ mode }) => {
       minify: !emitSourcemaps,
     },
     plugins: [
-react(),
+      react(),
       tailwindcss(),
       figmaSiteConfiguration(siteConfiguration),
       figmaErrorOverlayReplay(),
@@ -29,7 +37,7 @@ react(),
     ],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, './src'),
+        '@': path.resolve(import.meta.dirname, './src'),
       },
     },
     server: {
@@ -39,7 +47,7 @@ react(),
       watch: {
         ignored: [
           '**/.figma/**',
-],
+        ],
       },
     },
     preview: {
@@ -398,9 +406,9 @@ function figmaMakeKitPlugin(options: { storiesGlob: string | string[] }): Plugin
  * path, such as `libraries/<name>/`.
  */
 function figmaLinkedPackageSourcemaps(): Plugin {
-  const packageJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'package.json'), 'utf8'))
+  const packageJson = JSON.parse(fs.readFileSync(path.resolve(import.meta.dirname, 'package.json'), 'utf8'))
   const linkedPackages = Object.keys({ ...packageJson.dependencies, ...packageJson.devDependencies }).flatMap((name) => {
-    const installedDir = path.resolve(__dirname, 'node_modules', name)
+    const installedDir = path.resolve(import.meta.dirname, 'node_modules', name)
     try {
       const realDir = fs.realpathSync(installedDir)
       return realDir.split(path.sep).includes('node_modules') ? [] : [{ installedDir, realDir }]
@@ -424,7 +432,7 @@ function figmaLinkedPackageSourcemaps(): Plugin {
         const mapFile = path.resolve(path.dirname(file), url)
         return { map: JSON.parse(fs.readFileSync(mapFile, 'utf8')), mapDir: path.dirname(mapFile) }
       }
-    } catch {}
+    } catch { }
     // Without a usable input map, map every line to itself.
     const mappings = code.split('\n').map((_, i) => (i ? 'AACA' : 'AAAA'))
     const map = { version: 3, sources: [file], sourcesContent: [code], names: [], mappings: mappings.join(';') }
