@@ -4,7 +4,7 @@ import { Reveal, Motes, Ornament, PageHeader, Corner, BookIcon, QuillIcon, Shelf
 
 const NAV = [
   ['/profile', 'Reader Profile'],
-  ['/analyses', 'Nine Analyses'],
+  ['/analyses', 'Seven Analyses'],
   ['/masterpiece', 'Favorite Masterpiece'],
   ['/learning', 'Summary of Learning'],
   ['/reflection', 'Personal Reflection'],
@@ -24,7 +24,7 @@ function useRoute() {
 /* ---------------- Home: Grand Corridor ---------------- */
 const DOORS = [
   { to: '/profile', n: 'I', name: 'The Archivist’s Study', sub: 'Student Profile', wood: 'linear-gradient(180deg,#5a2f1f,#3a1d12)', iron: 'linear-gradient(180deg,#4a4a4f,#1c1c20)', emblem: 'quill' },
-  { to: '/analyses', n: 'II', name: 'The Nine Tomes Archive', sub: 'Nine Literary Analyses', wood: 'linear-gradient(180deg,#3a251c,#22130d)', iron: 'linear-gradient(180deg,#f1d77a,#8c6d1c)', emblem: 'books' },
+  { to: '/analyses', n: 'II', name: 'The Seven Tomes Archive', sub: 'Seven Literary Analyses', wood: 'linear-gradient(180deg,#3a251c,#22130d)', iron: 'linear-gradient(180deg,#f1d77a,#8c6d1c)', emblem: 'books' },
   { to: '/masterpiece', n: 'III', name: 'The Crown Jewel Gallery', sub: 'Favorite Masterpiece', wood: 'linear-gradient(180deg,#4a2574,#2a1340)', iron: 'linear-gradient(180deg,#f1d77a,#8c6d1c)', emblem: 'crown' },
   { to: '/learning', n: 'IV', name: 'The Grimoire Chamber', sub: 'Summary of Learning', wood: 'linear-gradient(180deg,#2a2330,#120e16)', iron: 'linear-gradient(180deg,#5d5d66,#222228)', emblem: 'star' },
   { to: '/reflection', n: 'V', name: 'The Reflection Alcove', sub: 'Personal Reflection', wood: 'linear-gradient(180deg,#6a3a22,#43230f)', iron: 'linear-gradient(180deg,#4a4a4f,#1c1c20)', emblem: 'flame' },
@@ -286,11 +286,11 @@ function Book({ a }: { a: Analysis }) {
 }
 
 function Analyses() {
-  const rows = [analyses.slice(0, 3), analyses.slice(3, 6), analyses.slice(6, 9)];
-  const plaques = ['Tomes I – III', 'Tomes IV – VI', 'Tomes VII – IX'];
+  const rows = [analyses.slice(0, 3), analyses.slice(3, 6), analyses.slice(6, 7)];
+  const plaques = ['Tomes I – III', 'Tomes IV – VI', 'Tome VII'];
   return (
     <>
-      <PageHeader kicker="Page II · Nine Analyses" title="The Nine Tomes" sub="Nine works, nine perspectives. Choose a book from the shelf to open its full analysis." />
+      <PageHeader kicker="Page II · Seven Analyses" title="The Seven Tomes" sub="Seven works, seven perspectives. Choose a book from the shelf to open its full analysis." />
       <section className="max-w-6xl mx-auto px-4 py-16">
         {rows.map((row, r) => (
           <Shelf key={r} plaque={plaques[r]}>
